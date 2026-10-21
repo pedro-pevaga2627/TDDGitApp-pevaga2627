@@ -19,6 +19,7 @@ namespace TDDGitApp_pevaga2627
 			return resultado;
 		}
 
+		// Autor: Pedro Valles Gambín - pevaga2627
 		public static bool EsContrasenyaValida(string contrasenya)
 		{
 			throw new NotImplementedException();

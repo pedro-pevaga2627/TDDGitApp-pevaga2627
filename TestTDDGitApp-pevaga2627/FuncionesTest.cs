@@ -20,5 +20,20 @@ namespace TestTDDGitApp_pevaga2627
 			long result = Funciones.CalcularFactorial(n);
 			Assert.AreEqual(esperado, result);
 		}
+
+		// Autor: Pedro Valles Gambín - pevaga2627
+		[TestMethod]
+		[DataRow(null, false)]          // null
+		[DataRow("", false)]            // vacía
+		[DataRow("Ab#1234", false)]     // 7 caracteres
+		[DataRow("Abcd1234", false)]    // 8 caracteres, sin #
+		[DataRow("Abcd#123", true)]     // justo 8 con #
+		[DataRow("Abc#12345678", true)] // más de 8 con #
+		public void EsContrasenyaValida_VariosCasos(string contrasenya, bool esperado)
+		{
+			bool result = Funciones.EsContrasenyaValida(contrasenya);
+			Assert.AreEqual(esperado, result);
+		}
+
 	}
 }
