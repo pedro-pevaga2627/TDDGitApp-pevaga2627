@@ -1,10 +1,39 @@
 ﻿
-// Autor: Pedro Valles Gambín - PeVaGa2627
+// Autor: Pedro Valles Gambín - pevaga2627
+
+using TDDGitApp_pevaga2627;
+
 namespace TestTDDGitApp_pevaga2627
 {
 	[TestClass]
 	public sealed class FuncionesTest
 	{
-		// Test a implementar
+		[TestMethod]
+		[DataRow(-1, -1L)]   // negativo
+		[DataRow(-5, -1L)]   // negativo
+		[DataRow(0, 1L)]     // el factorial de 0 es 1
+		[DataRow(1, 1L)]	// el factorial de 1 es 1
+		[DataRow(5, 120L)]	// factorial de 5
+		[DataRow(10, 3628800L)] // factorial de 10
+		public void CalcularFactorial_VariosCasos(int n, long esperado)
+		{
+			long result = Funciones.CalcularFactorial(n);
+			Assert.AreEqual(esperado, result);
+		}
+
+		// Autor: Pedro Valles Gambín - pevaga2627
+		[TestMethod]
+		[DataRow(null, false)]          // null
+		[DataRow("", false)]            // vacía
+		[DataRow("Ab#1234", false)]     // 7 caracteres
+		[DataRow("Abcd1234", false)]    // 8 caracteres, sin #
+		[DataRow("Abcd#123", true)]     // justo 8 con #
+		[DataRow("Abc#12345678", true)] // más de 8 con #
+		public void EsContrasenyaValida_VariosCasos(string contrasenya, bool esperado)
+		{
+			bool result = Funciones.EsContrasenyaValida(contrasenya);
+			Assert.AreEqual(esperado, result);
+		}
+
 	}
 }
